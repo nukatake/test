@@ -21,13 +21,13 @@ workflows:
   deploy-workflow:
     jobs:
       - deploy-dev:
-        filters:
-          branches:
-            only: 
-              - develop
+          filters:
+            branches:
+              only: 
+                - develop
       - deploy-stg:
-        filters:
-          branches:
-            only:
-              - staging
+          filters:
+            branches:
+              only:
+                - staging
       
