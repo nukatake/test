@@ -44,7 +44,7 @@ jobs:
                ProxyCommand sh -c \"aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'\"" >> ~/.ssh/config
             cat ~/.ssh/config
             uname -a
-            ssh -o StrictHostKeyChecking=no ec2-user@i-0712bb7d156700714 "pwd;id;env"
+            ssh -o StrictHostKeyChecking=no ec2-user@i-0712bb7d156700714 "source ~/.bash_profile;pwd;id;env; nohup sh hoge.sh > /tmp/hoge.txt 2>&1 &"
  
 
 workflows:
