@@ -37,6 +37,7 @@ jobs:
       - run:
           name: "hogehoge"
           command: |
+            echo $AWS_ACCESS_KEY_ID
             aws s3 ls
             curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
             sudo dpkg -i session-manager-plugin.deb
