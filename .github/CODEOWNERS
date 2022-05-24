@@ -1,0 +1,11 @@
+# 全ファイルの所有者
+* @takeshi.nukanobu
+
+# 特定の拡張子のファイル所有者
+#*.html @username2
+#*.js @username2
+#*.scss @username2
+
+# 特定のディレクトリ直下ファイルの所有者
+# Eメールアドレスも指定可
+* takeshi.nukanobu@trys2020.com
