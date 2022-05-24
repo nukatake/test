@@ -1,5 +1,9 @@
 version: 2.1
 
+orbs:
+  aws-cli: circleci/aws-cli@3.1.1
+
+
 jobs:
   deploy-dev:
     docker:
@@ -7,7 +11,8 @@ jobs:
     steps:
       - run:
           name: "dev"
-          command: "curl trys2020.com"
+          command: "echo dev"
+
   deploy-stg:
     docker:
       - image: cimg/base:stable
@@ -16,6 +21,14 @@ jobs:
           name: "stg"
           command: "wget --no-check-certificate https://trys2020.com"
 
+  deploy-hogehoge:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - run:
+          name: "hogehoge"
+          command: "aws s3 ls"
+ 
 
 workflows:
   deploy-workflow:
@@ -30,4 +43,9 @@ workflows:
             branches:
               only:
                 - staging
+      - deploy-stg:
+          filters:
+            branches:
+              only:
+                - hogehoge
       
