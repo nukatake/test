@@ -7,14 +7,14 @@ jobs:
     steps:
       - run:
           name: "dev"
-          command: "echo devlelop"
+          command: "curl trys2020.com"
   deploy-stg:
     docker:
       - image: cimg/base:stable
     steps:
       - run:
           name: "stg"
-          command: "echo stg"
+          command: "wget --no-check-certificate https://trys2020.com"
 
 
 workflows:
