@@ -43,7 +43,7 @@ workflows:
             branches:
               only:
                 - staging
-      - deploy-stg:
+      - deploy-hogehoge:
           filters:
             branches:
               only:
