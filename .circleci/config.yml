@@ -25,6 +25,7 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
+      - aws-cli/install
       - run:
           name: "hogehoge"
           command: "aws s3 ls"
