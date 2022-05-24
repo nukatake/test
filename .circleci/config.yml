@@ -8,6 +8,7 @@ jobs:
   deploy-dev:
     docker:
       - image: cimg/base:stable
+    resource_class: small
     steps:
       - aws-cli/install
       - run:
@@ -17,6 +18,7 @@ jobs:
   deploy-stg:
     docker:
       - image: cimg/base:stable
+    resource_class: small
     steps:
       - aws-cli/install
       - run:
@@ -26,6 +28,7 @@ jobs:
   deploy-hogehoge:
     docker:
       - image: cimg/base:stable
+    resource_class: small
     steps:
       - aws-cli/install
       - run:
