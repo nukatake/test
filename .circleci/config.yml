@@ -7,7 +7,15 @@ jobs:
     steps:
       - run:
           name: "Say hello"
-          command: "echo Hello, World!"
+          command: "echo devlelop"
+  deploy-stg:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - run:
+          name: "Say hello"
+          command: "echo stg"
+
 
 workflows:
   deploy-dev-workflow:
@@ -15,5 +23,11 @@ workflows:
       - deploy-dev:
         filters:
           branches:
-            only: develop
+            only: 
+              - develop
+      - depoly-stg:
+        filters:
+          branches:
+            only:
+              - staging
       
