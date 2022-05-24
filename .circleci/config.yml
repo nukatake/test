@@ -30,11 +30,17 @@ jobs:
       - image: cimg/base:stable
     resource_class: small
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "1d:87:7f:fa:5c:14:69:03:a6:42:ff:af:5a:60:a7:0a"
       - aws-cli/install
       - run:
           name: "hogehoge"
           command: |
             aws s3 ls
+            echo "host i-* mi-* 
+               ProxyCommand sh -c \"aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'\"" >> ~/.ssh/config
+            ssh ec2-user@i-0712bb7d156700714 "hostname"
  
 
 workflows:
