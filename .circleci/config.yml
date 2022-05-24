@@ -6,19 +6,19 @@ jobs:
       - image: cimg/base:stable
     steps:
       - run:
-          name: "Say hello"
+          name: "dev"
           command: "echo devlelop"
   deploy-stg:
     docker:
       - image: cimg/base:stable
     steps:
       - run:
-          name: "Say hello"
+          name: "stg"
           command: "echo stg"
 
 
 workflows:
-  deploy-dev-workflow:
+  deploy-workflow:
     jobs:
       - deploy-dev:
         filters:
