@@ -5,7 +5,7 @@ orbs:
 
 
 jobs:
-  deploy-dev:
+  build:
     docker:
       - image: cimg/base:stable
     resource_class: small
@@ -52,7 +52,7 @@ jobs:
 workflows:
   deploy-workflow:
     jobs:
-      - deploy-dev:
+      - build:
           filters:
             branches:
               only: 
