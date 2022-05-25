@@ -45,8 +45,8 @@ jobs:
             echo "host i-* mi-* 
                ProxyCommand sh -c \"aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'\"" >> ~/.ssh/config
             ret=`ssh -o StrictHostKeyChecking=no ec2-user@${INSTANCE_ID} "ls -d /home/webrs/webrs-legacy-web >/dev/null 2>&1;echo $?"`
-            echo $ret
-            ssh -o StrictHostKeyChecking=no ec2-user@${INSTANCE_ID} "source ~/.bash_profile;pwd;id;env; sudo nohup sh hoge.sh > /tmp/hoge.txt 2>&1 &"
+            echo "ret=${ret}"
+            ssh -o StrictHostKeyChecking=no ec2-user@${INSTANCE_ID} "source ~/.bash_profile;nohup sh hoge.sh > /tmp/hoge.txt 2>&1 &"
           no_output_timeout: 3m 
 
 workflows:
