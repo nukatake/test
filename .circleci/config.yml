@@ -37,13 +37,16 @@ jobs:
       - run:
           name: "hogehoge"
           command: |
+            INSTANCE_ID="i-0712bb7d156700714" # webrs-legacy-dev_0
             export AWS_ACCESS_KEY_ID=$DEV_AWS_ACCESS_KEY_ID
             export AWS_SECRET_ACCESS_KEY=$DEV_AWS_SECRET_ACCESS_KEY
             curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
             sudo dpkg -i session-manager-plugin.deb
             echo "host i-* mi-* 
                ProxyCommand sh -c \"aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'\"" >> ~/.ssh/config
-            ssh -o StrictHostKeyChecking=no ec2-user@i-0712bb7d156700714 "source ~/.bash_profile;pwd;id;env; sudo nohup sh hoge.sh > /tmp/hoge.txt 2>&1 &"
+            ret=`ssh -o StrictHostKeyChecking=no ec2-user@${INSTANCE_ID} "ls -d /home/webrs/webrs-legacy-web >/dev/null 2>&1;echo $?"`
+            echo $ret
+            ssh -o StrictHostKeyChecking=no ec2-user@${INSTANCE_ID} "source ~/.bash_profile;pwd;id;env; sudo nohup sh hoge.sh > /tmp/hoge.txt 2>&1 &"
           no_output_timeout: 3m 
 
 workflows:
