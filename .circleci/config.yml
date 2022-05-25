@@ -44,9 +44,9 @@ jobs:
             sudo dpkg -i session-manager-plugin.deb
             echo "host i-* mi-* 
                ProxyCommand sh -c \"aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'\"" >> ~/.ssh/config
+            ret=`ssh -o StrictHostKeyChecking=no ec2-user@${INSTANCE_ID} "ls /home/ec2-user/hoge && echo ok "`
             echo "ret=${ret}"
-            ret=`ssh -o StrictHostKeyChecking=no ec2-user@${INSTANCE_ID} "ls /home/webrs/webrs-legacy-web && echo ok "`            echo "ret=$ret"
-            ssh -o StrictHostKeyChecking=no ec2-user@${INSTANCE_ID} "cd /home/ec2-user/hoge/ && sh hoge.sh >/tmp/hoge.sh"
+            ssh -o StrictHostKeyChecking=no ec2-user@${INSTANCE_ID} "cd /home/ec2-user/hoge/hoge.sh && nohup sh hoge.sh >tmp/hoge.sh.txt &"
           no_output_timeout: 3m 
 
 workflows:
