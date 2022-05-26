@@ -54,17 +54,18 @@ workflows:
     jobs:
       - approve_stg:
           type: approval
-            filters:
-              branches:
-                only:
-                  - staging
+          filters:
+            branches:
+              only:
+                - staging
       - deploy-dev:
           filters:
             branches:
               only: 
                 - develop
       - deploy-stg:
-          requires: approve_stg
+          requires: 
+            - approve_stg
           filters:
             branches:
               only:
