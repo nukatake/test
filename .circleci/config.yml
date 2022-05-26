@@ -58,6 +58,7 @@ workflows:
               only: 
                 - develop
       - deploy-stg:
+          trpe: approval
           filters:
             branches:
               only:
