@@ -56,7 +56,7 @@ workflows:
           filters:
             branches:
               only: 
-                - develop
+                - dev*
       - deploy-stg:
           filters:
             branches:
