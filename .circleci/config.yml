@@ -52,12 +52,20 @@ jobs:
 workflows:
   deploy-workflow:
     jobs:
+      - approve_stg:
+          type: approval
+          filters:
+            branches:
+              only:
+                - staging
       - deploy-dev:
           filters:
             branches:
               only: 
                 - dev*
       - deploy-stg:
+          requires: 
+            - approve_stg
           filters:
             branches:
               only:
