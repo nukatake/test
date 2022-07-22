@@ -62,7 +62,7 @@ workflows:
           filters:
             branches:
               only: 
-                - develop
+                - dev*
       - deploy-stg:
           requires: 
             - approve_stg
